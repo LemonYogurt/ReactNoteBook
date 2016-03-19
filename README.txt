@@ -24,3 +24,5 @@ git checkout -b branchName
 git branch -a
 查看本地分支
 git branch
+
+git push -u origin dev
