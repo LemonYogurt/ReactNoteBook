@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="../build/react.js"></script>
+	<script src="../build/react-dom.js"></script>
+	<!--bowser.js的作用是将JSX语法转为Javascript语法-->
+	<script src="../build/browser.min.js"></script>
+</head>
+<body>
+	<div id="box"></div>
+	<!--JSX语法，跟Javascript不兼容，凡是使用JSX的地方，都要写type="text/babel"-->
+	<!--在0.13版本中，type="text/jsx"-->
+	<script type="text/babel">
+		// 注意：这里创建组件的时候，开头字母必须大写，否则将不会显示
+		var MyComponent = React.createClass({
+			render: function () {
+				return (
+					<h1 className="header">我的第一个组件</h1>
+				);
+			}
+		});
+		ReactDOM.render(<MyComponent />, document.getElementById('box'));
+	</script>
+</body>
+</html>
