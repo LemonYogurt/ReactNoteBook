@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css"/>
+    <script src="../../build/react.min.js"></script>
+    <script src="../../build/react-dom.min.js"></script>
+    <script src="../../build/browser.min.js"></script>
+</head>
+<body>
+<div id="box"></div>
+<script  type="text/babel">
+    var MyComponent = React.createClass({
+        // 方法名可以随便定义
+        handleClick1: function (event) {
+            event.target.innerHTML = 'React Native';
+        },
+        render: function () {
+            return <div onClick={this.handleClick1.bind(this)}>React</div>;
+        }
+    });
+
+    ReactDOM.render(<MyComponent />, document.getElementById('box'));
+</script>
+</body>
+</html>

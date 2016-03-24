@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css"/>
+    <script src="../../build/react.min.js"></script>
+    <script src="../../build/react-dom.min.js"></script>
+    <script src="../../build/browser.min.js"></script>
+</head>
+<body>
+<div id="box"></div>
+<script  type="text/babel">
+    // 由于JSX会转换为原生的JavaScript函数，因此有一些关键词我们是不能用的——如：for和class
+    var MyComponent = React.createClass({
+        render: function () {
+            var styleObj = {
+                color: '#9f0',
+                marginTop: '50px',
+                marginLeft: '100px'
+            };
+            return (<div className="form-group">
+                            <label style={styleObj} className={"control-label"} htmlFor="for-text">输入框:</label>
+                            <input style={{'background-color': 'pink'}} type="text" id="for-text" className="form-control" />
+                    </div>);
+        }
+    });
+
+    ReactDOM.render(<MyComponent />, document.getElementById('box'));
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css"/>
+    <script src="../../build/react.min.js"></script>
+    <script src="../../build/react-dom.min.js"></script>
+    <script src="../../build/browser.min.js"></script>
+</head>
+<body>
+<div id="box"></div>
+<script  type="text/babel">
+    // 条件判断
+    // 直接往JSX中加入if语句会渲染出无效的Javascript
+
+    // 可以使用三目运算符 或者 &&运算符 或者 设置一个变量并在属性中引用它 或者 将逻辑转化到函数中
+    var MyComponent = React.createClass({
+        getRandomNum: function () {
+            return parseInt(Math.ceil(Math.random() * 10) - 5);
+        },
+        render: function () {
+            return (
+                    <h1>{this.getRandomNum() > 0 ? '正数': '负数'}</h1>
+            );
+        }
+    });
+
+    ReactDOM.render(<MyComponent />, document.getElementById('box'));
+</script>
+</body>
+</html>

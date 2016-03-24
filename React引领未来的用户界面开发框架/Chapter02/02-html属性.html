@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css"/>
+    <script src="../../build/react.min.js"></script>
+    <script src="../../build/react-dom.min.js"></script>
+    <script src="../../build/browser.min.js"></script>
+</head>
+<body>
+<div id="box"></div>
+<script  type="text/babel">
+    var MyComponent = React.createClass({
+        render: function () {
+            var sureyQuestionId = this.props.id;
+            var classes = this.props.className;
+
+            return (
+                    <div id={sureyQuestionId} className={classes}>
+                        <h1>.......</h1>
+                    </div>
+            );
+        }
+    });
+
+    ReactDOM.render(<MyComponent id="myComponent" className="test" />, document.getElementById('box'));
+    // 完整的例子：https://github.com/backstopmedia/bleeding-edge-sample-app
+</script>
+</body>
+</html>

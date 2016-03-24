@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css"/>
+    <script src="../../build/react.min.js"></script>
+    <script src="../../build/react-dom.min.js"></script>
+    <script src="../../build/browser.min.js"></script>
+</head>
+<body>
+<div id="box"></div>
+<div id="box1"></div>
+<script type="text/babel">
+    /*
+    注意：jsx语法必须写在type属性是text/babel的script标签中
+        组件名首字母必须大写
+     */
+    var Divider = React.createClass({
+        dateToString: function (d) {
+            return [
+                d.getFullYear(),
+                d.getMonth() + 1,
+                d.getDate()
+            ].join('-');
+        },
+        render: function () {
+            /* 使用数组会直接将数组连接起来，中间没有任何的分隔符 */
+            return (
+                    <div className="divider">
+                        <h2>Questions, {this.dateToString(new Date())}</h2><hr/>
+                        <h4>{['React ', 'React Native']}</h4>
+                    </div>
+            );
+        }
+    });
+    /*
+    React将开始标签与结束标签之间的所有子节点保存在一个名为this.props.children的特殊属性组件属性中
+    它本身是一个数组，如果标签之间只有一个节点（包括文本节点）, 类型判断的时候是String类型
+    如果标签之间有多个节点，则是Array类型
+     */
+    var Divider2 = React.createClass({
+        render: function () {
+            return (
+                <div className="divider">
+                    <h2>Questions, {Object.prototype.toString.call(this.props.children) + ':' + this.props.children + ':' + (this.props.children == ['ReactDOM'])}</h2><hr/>
+                </div>
+            );
+        }
+    });
+    ReactDOM.render(<Divider />, document.getElementById('box'));
+    ReactDOM.render(<Divider2>ReactDOM<p className="col-md-4">This is a p element</p></Divider2>, document.getElementById('box1'));
+</script>
+</body>
+</html>

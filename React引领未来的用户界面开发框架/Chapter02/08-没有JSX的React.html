@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css"/>
+    <script src="../../build/react.min.js"></script>
+    <script src="../../build/react-dom.min.js"></script>
+    <script src="../../build/browser.min.js"></script>
+</head>
+<body>
+<div id="box"></div>
+<script  type="text/javascript">
+    // 第一种形式：
+    /*
+    var DividerClass = React.createClass({
+        displayName: 'Divider',
+        render: function () {
+            // createElement有n个参数：
+            // 第一个参数：创建元素的标签名
+            // 第二个参数：元素上的属性
+            // 第三...个参数：元素的节点内容
+
+            return (
+                    React.createElement(
+                            'div',
+                            {className: 'divider'},
+                            React.createElement('h2', null, this.props.children),
+                            React.createElement('hr', null)
+                    )
+            );
+        }
+    });
+    */
+    // 第2种形式：
+    var DividerClass = React.createClass({
+        displayName: 'Divider',
+        render: function () {
+            // createElement有n个参数：
+            // 第一个参数：创建元素的标签名
+            // 第二个参数：元素上的属性
+            // 第三...个参数：元素的节点内容
+
+            return (
+                    React.DOM.div(
+                            {className: 'divider'},
+                            React.DOM.h2(null, this.props.children),
+                            React.DOM.hr(null)
+                    )
+            );
+        }
+    });
+    /* 第①种方式：直接调用React.createElement */
+//    var divider = React.createElement(DividerClass, null, 'Hello React');
+//    ReactDOM.render(divider, document.getElementById('box'));
+    /* 第②种方式：创建一个工厂，类似React.DOM.* */
+    var Divider = React.createFactory(DividerClass);
+    var divider = Divider(null, 'Hello React');
+    ReactDOM.render(divider, document.getElementById('box'));
+
+    // http://facebook.github.io/jsx/
+</script>
+</body>
+</html>
