@@ -12,8 +12,9 @@
 	<div id="app"></div>
 	<script type="text/babel">
 		var HelloWorld = React.createClass({
+			// style内联样式必须是一个对象，而且使用驼峰标识写法
 			render: function () {
-				return <p>Hello {this.props.name}</p>;
+				return <div style={{color: '#9f0', fontSize: '44px'}} className="btn btn-default">Hello {this.props.name}</div>;
 			}
 		});
 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-组件嵌套</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <script src="../build/react.min.js"></script>
+    <script src="../build/react-dom.min.js"></script>
+    <script src="../build/browser.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div id="app"></div>
+</div>
+<script type="text/babel">
+    var MyComponents = React.createClass({
+        handlerClick: function () {
+            alert('I am React...');
+        },
+        render: function () {
+            return (
+                <h1 onClick={this.handlerClick}>
+                    React 。。。
+                    <SubMessage />
+                </h1>
+            );
+        }
+    });
+
+    var SubMessage = React.createClass({
+        render: function () {
+            var footerArr = [];
+            for (var i = 0; i < 10; i++) {
+                footerArr.push(<Footer key={"footer" + i}/>);
+            }
+            return (
+                    <h3>
+                        写代码很有意思
+                        {footerArr}
+                    </h3>
+            );
+        }
+    });
+
+    var Footer = React.createClass({
+        render: function () {
+            return (
+                    <div>
+                        <small>因为我们在用代码创造</small>
+                    </div>
+            );
+        }
+    });
+
+    ReactDOM.render(<MyComponents />, document.getElementById('app'), function () {
+        alert('渲染完成');
+    });
+</script>
+</body>
+</html>
