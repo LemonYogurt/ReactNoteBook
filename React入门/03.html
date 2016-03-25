@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../build/react.min.js"></script>
+    <script src="../build/react-dom.min.js"></script>
+    <script src="../build/browser.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+        /*
+            输出结果：
+             initialState
+             Will
+             render
+             Did
+         */
+        var MyComponents = React.createClass({
+            getInitialState: function () {
+                // 最终执行结果可以返回一个object，这个返回的object，就定义了当前component的state
+                console.log('initialState');
+                return {
+                    opacity: 0.5,
+                    fontSize: '24px',
+                    color: '#9f0'
+                };
+            },
+            render: function () {
+                console.log('render');
+                return <div style={this.state}>
+                            Hello {this.props.name}
+                            <h6 style={{fontSize:this.state.fontSize, color:this.state.color}}>React</h6>
+                        </div>;
+            },
+            componentWillMount: function () {
+                console.log('Will');
+            },
+            componentDidMount: function () {
+                console.log('Did');
+
+                var _self = this;
+                window.setTimeout(function () {
+                    _self.setState({
+                        opacity: 0.25,
+                        fontSize: '50px',
+                        border: '5px solid pink',
+                        borderRadius: '2px'
+                    });
+                }, 1000);
+            }
+        });
+
+        ReactDOM.render(<MyComponents name="React Native" />, document.getElementById('app'));
+    </script>
+</body>
+</html>
